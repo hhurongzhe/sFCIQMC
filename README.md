@@ -2,6 +2,6 @@
 
 a simple FCIQMC algorithm for pairing model, serves as a benchmark with other *ab initio* many-body methods.
 
-please contact rongzhe_hu@pku.edu.cn if interested.
+will be made public once submitted for publication.
 
-working in progress...
+please contact rongzhe_hu@pku.edu.cn if interested.
