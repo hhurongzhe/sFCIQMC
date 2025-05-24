@@ -2,6 +2,7 @@ import numpy as np
 import random
 from typing import Dict, List
 
+from .profiler import *
 from .basis import *
 from .hamiltonian import *
 
@@ -12,19 +13,19 @@ class FCIQMC:
         self.hamiltonian = hamil
         self.params = params
         self.NMO = self.basis.NMO
-        print("TODO")
+        print("TODO: init")
 
-    def warm(self):
-        print("TODO")
+    def warm(self, nw: int):
+        print("TODO: warm")
 
     def start(self):
-        print("TODO")
+        print("TODO: start")
 
     def step(self):
-        print("TODO")
+        print("TODO: step")
 
     def annihilation(self):
-        print("TODO")
+        print("TODO: annihilation")
 
 
 if __name__ == "__main__":
