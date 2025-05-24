@@ -1,18 +1,20 @@
 import numpy as np
 
-
 from .basis import *
 
 
 class Hamiltonian:
-    def __init__(self, basis: Basis):
+    # basis: one-body basis structure
+    # g: pairing-interaction strength
+    def __init__(self, basis: Basis, g: float = 0.1):
         self.basis = basis
-        self.NMO = self.basis.one_body_basis_number
+        self.NMO = self.basis.NMO
+        self.g = g
 
     # calculate <Df|H|Di>
     def get_matrix_element(self, Df: Det, Di: Det) -> float:
-        D = get_excite_det(Df, Di, self.NMO)
-        diff = D.occupation_number
+        D = get_excite_det(Df, Di, self.NMO)  # different part of Df and Di
+        diff = D.occupation_number  # number of different orbitals of Df and Di
         if diff == 0:
             # diagonal part
             # <D|H|D>, with Df=Di=D

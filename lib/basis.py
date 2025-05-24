@@ -19,6 +19,8 @@ class Basis:
         self.two_body_basis_map = self.build_two_body_basis_sorted()
         self.two_body_basis_number = len(self.two_body_basis)
         self.two_body_channel_number = len(self.two_body_basis_map)
+        # NMO is provided for convenience
+        self.NMO = self.one_body_basis_number
 
     # get index-th one-body state |index>
     def get_one_body_state(self, index: int) -> Orbital:

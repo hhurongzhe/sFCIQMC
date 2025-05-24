@@ -7,7 +7,14 @@ from .hamiltonian import *
 
 
 class FCIQMC:
-    def __init__(self):
+    def __init__(self, basis: Basis, hamil: Hamiltonian, params: dict):
+        self.basis = basis
+        self.hamiltonian = hamil
+        self.params = params
+        self.NMO = self.basis.NMO
+        print("TODO")
+
+    def warm(self):
         print("TODO")
 
     def start(self):
