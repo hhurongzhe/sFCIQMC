@@ -127,6 +127,28 @@ class Det:
         return f"Det(NMO={self.nmo}, occupation number={self.count_occupation()}, Indices={self.get_occupied_indices()})"
 
 
+def get_overlap_det(D1: Det, D2: Det, NMO: int) -> Det:
+    overlap_mask = D1 & D2
+    overlap_det = Det.from_int(overlap_mask, NMO)
+    return overlap_det
+
+
+def get_overlap_indices(D1: Det, D2: Det, NMO: int) -> Tuple[int, ...]:
+    overlap_det = get_overlap_det(D1, D2, NMO)
+    return overlap_det.get_occupied_indices()
+
+
+def get_excite_det(D1: Det, D2: Det, NMO: int) -> Det:
+    excite_mask = D1 ^ D2
+    excite_det = Det.from_int(excite_mask, NMO)
+    return excite_det
+
+
+def get_excite_indices(D1: Det, D2: Det, NMO: int) -> Tuple[int, ...]:
+    excite_det = get_excite_det(D1, D2, NMO)
+    return excite_det.get_occupied_indices()
+
+
 # usage: python -m lib.basis
 if __name__ == "__main__":
     # tesing basis...
@@ -149,7 +171,7 @@ if __name__ == "__main__":
     NMO = 8
 
     det1 = Det([0, 2, 5], NMO)
-    print(det1)
+    print(f"\ndet1: {det1}\n")
     print(repr(det1))
     print(f"  轨道 2 是否占据? {det1.is_occupied(2)}")
     print(f"  轨道 3 是否占据? {det1.is_occupied(3)}")
@@ -158,11 +180,17 @@ if __name__ == "__main__":
     det2 = Det([1, 2, 6], NMO)
     print(f"\ndet2: {det2}")
 
+    # 计算公共部分：
+    overlap_mask = det1 & det2
+    overlap_det = Det.from_int(overlap_mask, NMO)
+    print(f"公共 : {overlap_det}")
+    print(f"公共的轨道: {overlap_det.get_occupied_indices()}")
+
     # 计算激发 (通过 XOR)
     excitation_mask = det1 ^ det2
     excitation_det = Det.from_int(excitation_mask, NMO)
-    print(f"\n激发 (XOR): {excitation_det}")
-    print(f"  激发的轨道: {excitation_det.get_occupied_indices()}")
+    print(f"激发 : {excitation_det}")
+    print(f"激发的轨道: {excitation_det.get_occupied_indices()}")
 
     # 用作字典键
     my_map = {det1: 10.5, det2: -3.2}
