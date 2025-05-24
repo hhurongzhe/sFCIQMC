@@ -1,7 +1,5 @@
 # sFCIQMC
 
-a simple FCIQMC algorithm for pairing model, serves as a benchmark with other *ab initio* many-body methods.
-
-will be made public once submitted for publication.
+a simple FCIQMC algorithm for pairing model, serves as a benchmark with other _ab initio_ many-body methods.
 
 please contact rongzhe_hu@pku.edu.cn if interested.

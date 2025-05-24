@@ -1,0 +1,4 @@
+WHAT'S NEW IN sFCIQMC
+
+(2025-05-24)
+* basic structures
